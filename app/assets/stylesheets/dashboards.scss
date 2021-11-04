@@ -1,0 +1,129 @@
+// Place all the styles related to the dashboards controller here.
+// They will automatically be included in application.scss.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body{
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+.navbar{
+  background-color: #8B5CF6;
+}
+.form-section{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 3rem 4rem !important;
+}
+.a-links{
+  color: #8B5CF6;
+}
+ul{
+  list-style-type: decimal;
+}
+.form-control.link-input{
+  border: none !important;
+  border-bottom: 1px solid rgb(194, 194, 194) !important;
+  border-radius: 0 !important;
+  font-size: 0.95rem !important;
+  transition: all 0.3s ease !important;
+}
+.form-control.link-input:focus{
+  outline:0px !important;
+  -webkit-appearance:none;
+  box-shadow: none !important;
+  border-bottom: 1px solid #8B5CF6 !important;
+}
+.form-control.link-input::placeholder{
+  color: rgb(150, 150, 150);
+}
+
+/* on off switch */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #8B5CF6;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #8B5CF6;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(27px);
+  -ms-transform: translateX(27px);
+  transform: translateX(27px);
+  box-shadow: #8B5CF6 0px 2px 5px -1px, #8B5CF6 0px 1px 3px -1px;
+
+}
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 25px;
+  width: 25px;
+  left: -1px;
+  bottom: -3px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: gray;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 18px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Previews */
+.prev-log{
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+.prev-log:hover{
+  opacity: 1;
+}
+.prev-log:focus{
+  opacity: 1;
+}
+/* GrayScaling */
+.prev-log-grayScale{
+  filter: grayscale(100%);
+}
+
+/* Embeded code text area */
+.embCode-textarea{
+  border: none !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  font-family: monospace;
+  font-size: 0.9rem !important;
+  height: 300px;
+}
+
+@media all and (max-width:576px) {
+  .form-section{
+    padding: 2rem !important;
+  }
+  .form-section p img{
+    float: none !important;
+    margin: 0rem !important;
+  }
+}
