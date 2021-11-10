@@ -17,7 +17,7 @@ import 'jquery'
 
 $(document).on('turbolinks:load', function() {
 
-    $(".link-input").on("input", function () {
+    $(".link-input").on("input", function() {
         var inpVal = $(this).val();
         var inpIndex = $(this).index()
         var logos = $('.logo-previews').children()
@@ -26,15 +26,14 @@ $(document).on('turbolinks:load', function() {
         updateTextArea()
     });
 
-
-    $('.checkboxInput').change(function () {
+    $('.checkboxInput').change(function() {
         if ($(this).is(":checked")) {
-            $('.pre-img').each(function () {
+            $('.pre-img').each(function() {
                 $(this).addClass('prev-log-grayScale')
             })
             updateTextArea()
         } else {
-            $('.pre-img').each(function () {
+            $('.pre-img').each(function() {
                 $(this).removeClass('prev-log-grayScale')
             })
             updateTextArea()
@@ -42,20 +41,36 @@ $(document).on('turbolinks:load', function() {
     })
 
     function updateTextArea() {
-        //on each trigger of input change we will set "inputVal" variable to new updated html.
         var inputVal = $('.logo-previews').html();
-        //Now we will pass the updated html to our text area so that a user can experince live changes in text area input.
         $('.embCode-textarea').val(inputVal)
     }
-
     updateTextArea();
 
-//initialy every input will be null or check box will not be in true state
-    $(document).ready(function () {
-        $('.link-input').val('')
-        $('.checkboxInput').prop('checked', false)
+
+    $(document).on('blur', '.api-link', function(){
+        var url = $(this).val();
+        var curr = $(this).attr('id');
+        var arr = curr.split('-');
+        var currId = arr[1];
+        if (url != '') {
+            url = url.replace(/^https?:\/\//, '')
+            fetch(`/dashboards/get_logo?url=${url}`)
+                .then(response => response.json())
+                .then(data => {
+                    $("#img-" + currId).attr("src", "data:image/*;base64," + data.image);
+                    $('#link-' + currId).attr('href', `https://${url}`)
+                })
+                .catch(error => console.log(error))
+        } else {
+            $("#img-" + currId).attr("src", null);
+            $('#link-' + currId).attr('href', '#');
+        }
     })
 
+    $(document).ready(function() {
+        $('.link-input').val('')
+        $('.checkboxInput').prop('checked', false);
+    });
 });
 
 
